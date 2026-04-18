@@ -1,43 +1,100 @@
-🛡️ Apartment Visitors Management System CVEs
+# 🛡️ Apartment Visitors Management System CVEs
 
-This repository contains multiple security vulnerabilities discovered in Apartment Visitors Management System v1.1, including publicly assigned CVEs.
+## 📌 Overview
 
-📌 CVE List
-CVE ID	Vulnerability	Component	Impact
-CVE-2026-39109	SQL Injection	Login (index.php)	Database Disclosure
-CVE-2026-39110	SQL Injection	Forgot Password (contactno)	Data Extraction
-CVE-2026-39111	SQL Injection	Forgot Password (email)	Sensitive Data Exposure
-CVE-2026-39112	Stored XSS	Visitor Form (visname)	Session Hijacking / Privilege Abuse
-🧠 Technical Summary
+This repository documents multiple security vulnerabilities discovered in **Apartment Visitors Management System v1.1**.  
+The issues include SQL Injection and Stored Cross-Site Scripting (XSS), each assigned a CVE identifier.
 
-The identified vulnerabilities include multiple SQL Injection points and a Stored Cross-Site Scripting (XSS) flaw.
+---
 
-These issues allow attackers to:
+## 🚨 CVE List
 
-Access sensitive database contents
-Execute arbitrary JavaScript
-Potentially compromise user sessions
-⚙️ Affected Version
-Apartment Visitors Management System v1.1
-🔬 Proof of Concept
+### CVE-2026-39109
+- **Vulnerability Type:** SQL Injection  
+- **Affected Component:** Login Page (`index.php`)  
+- **Attack Vector:** `username` parameter  
+- **Impact:** Unauthorized database access / data disclosure  
 
-Detailed PoC and reproduction steps are provided in each CVE folder.
+---
 
-🛠️ Tools Used
-Burp Suite
-SQLmap
-Manual Testing
-🛡️ Mitigation
-Use prepared statements (parameterized queries)
-Implement proper input validation
-Apply output encoding for user-controlled data
-Follow secure coding practices
-🔗 References
-https://phpgurukul.com/apartment-visitors-management-system-using-php-and-mysql/
-👤 Discoverer
+### CVE-2026-39110
+- **Vulnerability Type:** SQL Injection  
+- **Affected Component:** Forgot Password (`forgot-password.php`)  
+- **Attack Vector:** `contactno` parameter  
+- **Impact:** Sensitive data extraction  
 
-Efe Kaan Akkar
+---
 
-⚠️ Disclaimer
+### CVE-2026-39111
+- **Vulnerability Type:** SQL Injection  
+- **Affected Component:** Forgot Password (`forgot-password.php`)  
+- **Attack Vector:** `email` parameter  
+- **Impact:** Database information disclosure  
 
-This repository is for educational and security research purposes only. All testing was conducted in a controlled environment.
+---
+
+### CVE-2026-39112
+- **Vulnerability Type:** Stored Cross-Site Scripting (XSS)  
+- **Affected Component:** Visitor Form (`visitors-form.php`)  
+- **Attack Vector:** `visname` parameter  
+- **Impact:** Execution of arbitrary JavaScript in authenticated user sessions  
+
+---
+
+## 🧠 Summary
+
+The vulnerabilities are caused by improper input validation and unsafe handling of user-supplied data, leading to:
+
+- SQL Injection in authentication and password recovery modules  
+- Stored XSS in visitor management functionality  
+
+---
+
+## ⚙️ Affected Version
+
+- Apartment Visitors Management System v1.1
+
+---
+
+## 🔬 Proof of Concept
+
+Each CVE directory contains:
+- Request samples  
+- Payloads  
+- Validation steps (Burp Suite / SQLmap)  
+
+---
+
+## 🛠️ Tools Used
+
+- Burp Suite  
+- SQLmap  
+- Manual testing  
+
+---
+
+## 🛡️ Mitigation
+
+- Use prepared statements (parameterized queries)  
+- Validate and sanitize all inputs  
+- Apply output encoding for user-controlled data  
+- Follow OWASP secure coding practices  
+
+---
+
+## 🔗 References
+
+- https://phpgurukul.com/apartment-visitors-management-system-using-php-and-mysql/
+
+---
+
+## 👤 Discoverer
+
+**Efe Kaan Akkar**
+
+---
+
+## ⚠️ Disclaimer
+
+This repository is for educational and security research purposes only.  
+All testing was conducted in a controlled environment.
